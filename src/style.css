@@ -9,22 +9,33 @@ body {
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr 5fr;
+    background-image: url(./back.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+/* ----- SIDEBAR ----- */
 
 .sidebar {
     grid-column: 1 / 2;
-    background-color: rgb(80, 255, 255);
+    background-color: rgba(255, 255, 255, 0.466);
     display: grid;
     grid-template-rows: 1fr 4fr;
 }
 
-.maincontent {
-    grid-column: 2 / 3;
-    background-color: rgba(0, 255, 255, 0.397);
+@font-face {
+    font-family: 'todo';
+    src: url(./Demode.ttf);
 }
 
 .icon {
     grid-row: 1 / 2;
+    font-family: 'todo';
+    align-self: center;
+    justify-self: center;
+    font-size: 4rem;
+    color: aqua;
+    cursor: alias;
 }
 
 form {
@@ -37,17 +48,81 @@ form {
 }
 
 form > input {
-    border: 2px solid blue;
-    border-radius: 10px;
+    border: 1px solid aqua;
+    border-radius: 6px;
     padding: 7px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
+form > input:hover {
+    background-color: aqua;
+    transform: scale(1.07, 1.07);
+}
 
 button {
-    background-color: blue;
-    color: white;
-    border: 2px solid white;
-    padding: 8px;
+    background-color: rgba(0, 0, 255, 0);
+    color: black;
+    border: 2px solid black;
+    padding: 6px;
     border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    font-weight: bolder;
 }
 
+select {
+    border: 1px solid aqua;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+select:hover {
+    background-color: aqua;
+}
+
+button:hover {
+    background-color: aqua;
+}
+
+/* ----- MAIN ----- */
+
+.maincontent {
+    grid-column: 2 / 3;
+    background-color: rgba(0, 255, 255, 0.336);
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(1fr, 300px));
+    overflow: auto;
+}
+
+span {
+    min-width: 80%;
+    max-width: 80%;
+    height: 130px;
+    border: 3px dotted white;
+    background-color: aqua;
+    border-radius: 10px;
+    justify-self: center;
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    display: flex;
+    overflow: auto;
+}
+span:hover {
+    transform: scale(1.04, 1.04);
+}
+
+.todo {
+    height: 80%;
+    min-width: 90px;
+    border: 1px solid black;
+    border-radius: 5px;
+    align-self: center;
+    margin: 10px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.todo:hover {
+    transform: scale(1.03, 1.03);
+}
