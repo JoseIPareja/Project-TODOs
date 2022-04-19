@@ -1,5 +1,5 @@
-const createTodo = function (title, description, date, priority) {
-    return {title, description, date, priority};
+const createTodo = function (title, description, date, priority, projectselector) {
+    return {title, description, date, priority, projectselector};
 }
 
 export default createTodo;

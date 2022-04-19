@@ -17,10 +17,16 @@ projectbtn.addEventListener('click', () => {
 
 const addbtn = document.querySelector('#addbtn');
 addbtn.addEventListener('click', () => {
+    // Form Inputs:
     const todotitle = document.querySelector('#todotitle');
     const descrip = document.querySelector('#description');
     const date = document.querySelector('#date');
-    const priority = document.querySelector('select');
-    const newtodo = createTodo(todotitle.value, descrip.value, date.value, priority.value);
-    
+    const priority = document.querySelector('#priority');
+    const selectProject = document.querySelector('#selectProject');
+    // Form Button:
+    const newtodo = createTodo(todotitle.value, descrip.value, date.value, priority.value, selectProject.value);
+    if (newtodo.projectselector.value ===  aqua.textContent) {
+        aqua.appendChild(newtodo);
+    } else console.log("No Project Found");
+    //
 });
