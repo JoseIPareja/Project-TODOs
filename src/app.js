@@ -5,6 +5,7 @@ import createTodo from './createTodo';
 // INPUTS
 const myProjects = [];
 const myTodos = [];
+const mySpans = [];
 const projectname = document.querySelector('#projectinput');
 const maincontent = document.querySelector('.maincontent');
 
@@ -22,8 +23,9 @@ projectbtn.addEventListener('click', () => {
     myProjects.push(newproject);
     const span = document.createElement('span');
     span.textContent = myProjects[myProjects.length - 1]['projectname'];
-    span.classList.add(myProjects[myProjects.length - 1]['projectname']);
+    span.setAttribute('id', myProjects[myProjects.length - 1]['projectname']);
     maincontent.appendChild(span);
+    mySpans.push(span);
 });
 
 
@@ -43,6 +45,10 @@ addbtn.addEventListener('click', () => {
     myTodos.push(newtodo);
     const adiv = document.createElement('div');
     adiv.classList.add('todo');
-    console.log(maincontent);
-    //seleccionar .appendChild(adiv);
+    let allspans = document.querySelectorAll('span');
+    allspans.forEach(item => {
+        if (item.id == newtodo.projectselector) {
+            item.appendChild(adiv);
+        } else return;
+    })
 });
