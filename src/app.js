@@ -25,7 +25,8 @@ projectbtn.addEventListener('click', () => {
     span.textContent = myProjects[myProjects.length - 1]['projectname'];
     span.setAttribute('id', myProjects[myProjects.length - 1]['projectname']);
     maincontent.appendChild(span);
-    mySpans.push(span);
+    const anspan = Object.values(newproject);
+    mySpans.push(anspan);
 });
 
 
@@ -43,12 +44,37 @@ const addbtn = document.querySelector('#addbtn');
 addbtn.addEventListener('click', () => {
     const newtodo = createTodo(todotitle.value, descrip.value, date.value, priority.value, selectProject.value);
     myTodos.push(newtodo);
+
     const adiv = document.createElement('div');
     adiv.classList.add('todo');
+    
     let allspans = document.querySelectorAll('span');
     allspans.forEach(item => {
         if (item.id == newtodo.projectselector) {
             item.appendChild(adiv);
         } else return;
-    })
+    });
+
+    mySpans.forEach(arr => {
+        if (arr == newtodo.projectselector) {
+            const atitle = document.createElement('p');
+            atitle.textContent = newtodo.title;
+            adiv.appendChild(atitle);
+
+            const adate = document.createElement('p');
+            adate.textContent = newtodo.date;
+            adiv.appendChild(adate);
+
+            const apriority = document.createElement('p');
+            apriority.textContent = newtodo.priority;
+            adiv.appendChild(apriority);
+            if (apriority.textContent == "High") {
+                apriority.classList.add('high');
+                adiv.classList.add('borderhigh');
+            } else if (apriority.textContent == "Normal") {
+                apriority.classList.add('normal');
+                adiv.classList.add('bordernormal');
+            } else apriority.classList.add('low'), adiv.classList.add('borderlow');
+        } else return;
+    });
 });
