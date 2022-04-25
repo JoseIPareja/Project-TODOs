@@ -1,5 +1,6 @@
 const createProject = function (projectname) {
-    return {projectname};
+    let todoslist = [];
+    return {projectname, todoslist};
 }
 
 export default createProject;
