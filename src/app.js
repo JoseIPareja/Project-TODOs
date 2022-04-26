@@ -91,6 +91,9 @@ addbtn.addEventListener('click', () => {
 
 //Load & Draw localStorage
 window.onload = function () {
+    if (localStorage.length == 0) {
+        return;
+    } else {
     const archive = localStorage.getItem("A project");
     const parsedprojects = JSON.parse(archive);
 
@@ -138,4 +141,4 @@ window.onload = function () {
             });
         });
     });
-};
+}};
