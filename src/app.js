@@ -1,6 +1,7 @@
 import './style.css';
 import createProject from './createProject';
 import createTodo from './createTodo';
+import Dom from './Dom';
 
 // INPUTS
 const myProjects = [];
@@ -26,20 +27,14 @@ projectbtn.addEventListener('click', () => {
 
 
 // drawProject
-projectbtn.addEventListener('click', () => {
-    const span = document.createElement('span');
-    span.textContent = projectname.value;
-    span.setAttribute('id', projectname.value);
-    maincontent.appendChild(span);
+projectbtn.addEventListener('click', function () {
+    Dom.drawProject(projectname.value, maincontent);
 });
 
 
-// addingSelector
-projectbtn.addEventListener('click', () => {
-    const option = document.createElement('option');
-    option.textContent = projectname.value;
-    option.value = projectname.value;
-    selectProject.appendChild(option);
+// addProjectToForm
+projectbtn.addEventListener('click', function () {
+    Dom.addProjectToForm(projectname.value, selectProject);
 });
 
 
@@ -93,17 +88,14 @@ addbtn.addEventListener('click', () => {
 window.onload = function () {
     if (localStorage.length == 0) {
         return;
-    } else {
+    }
     const archive = localStorage.getItem("A project");
     const parsedprojects = JSON.parse(archive);
 
     parsedprojects.forEach(project => {
         myProjects.push(project);
         //drawProject
-        const span = document.createElement('span');
-        span.textContent = project.projectname;
-        span.setAttribute('id', project.projectname);
-        maincontent.appendChild(span);
+        Dom.drawProject(project.projectname, maincontent);
         //addingSelector
         const option = document.createElement('option');
         option.textContent = project.projectname;
@@ -141,4 +133,4 @@ window.onload = function () {
             });
         });
     });
-}};
+};
