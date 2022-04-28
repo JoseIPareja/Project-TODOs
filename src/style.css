@@ -153,17 +153,17 @@ span:hover {
     transform: scale(1.03, 1.03);
 }
 
-.low {
+.Low {
     color: blue;
     font-weight: bold;
 }
 
-.normal {
+.Normal {
     color: green;
     font-weight: bold;
 }
 
-.high {
+.High {
     color: red;
     font-weight: bold;
 }

@@ -64,13 +64,10 @@ addbtn.addEventListener('click', () => {
 
     const apriority = document.createElement('p');
     apriority.textContent = priority.value;
-    if (apriority.textContent == "High") {
-        apriority.classList.add('high');
-        adiv.classList.add('borderhigh');  
-    } else if (apriority.textContent == "Normal") {
-        apriority.classList.add('normal');
-        adiv.classList.add('bordernormal');
-    } else apriority.classList.add('low'), adiv.classList.add('borderlow');
+
+    //Dom.drawToDo(todotitle.value, date.value, priority.value);
+    Dom.classToAdd(priority.value, apriority);
+    Dom.changeBorder(priority.value, adiv);
 
     let allspans = document.querySelectorAll('span');
     allspans.forEach(item => {
@@ -97,10 +94,7 @@ window.onload = function () {
         //drawProject
         Dom.drawProject(project.projectname, maincontent);
         //addingSelector
-        const option = document.createElement('option');
-        option.textContent = project.projectname;
-        option.value = project.projectname;
-        selectProject.appendChild(option);
+        Dom.addProjectToForm(project.projectname, selectProject);
         //drawTodo
         project.todoslist.forEach(todo => {
             const adiv = document.createElement('div');
@@ -115,12 +109,12 @@ window.onload = function () {
             const apriority = document.createElement('p');
             apriority.textContent = todo.priority;
             if (apriority.textContent == "High") {
-                apriority.classList.add('high');
+                apriority.classList.add('High');
                 adiv.classList.add('borderhigh');  
             } else if (apriority.textContent == "Normal") {
-                apriority.classList.add('normal');
+                apriority.classList.add('Normal');
                 adiv.classList.add('bordernormal');
-            } else apriority.classList.add('low'), adiv.classList.add('borderlow');
+            } else apriority.classList.add('Low'), adiv.classList.add('borderlow');
 
             let allspans = document.querySelectorAll('span');
             allspans.forEach(item => {
